@@ -32,12 +32,12 @@ type (
 	    {{.lowerStartCamelObject}}Model
         InstallErrDoNothing(ctx context.Context, in *{{.upperStartCamelObject}}) error
         InstallErrDoUpdate(ctx context.Context, in *{{.upperStartCamelObject}},uniKey string, record goqu.Record, opts ...option.Option) error
-        FindSum(ctx context.Context, field string, opts ...option.Option) (float64, error)
-        FindCount(ctx context.Context, opts ...option.Option) (int64, error)
+        FindSum(ctx context.Context, field string, opts ...option.Option) (sum float64,err error)
+        FindCount(ctx context.Context, opts ...option.Option) (count int64,err error)
         First(ctx context.Context, opts ...option.Option) (*{{.upperStartCamelObject}}, error)
-        FindAll(ctx context.Context, opts ...option.Option) ([]*{{.upperStartCamelObject}}, error)
-        FindList(ctx context.Context, page, size uint, opts ...option.Option) ([]*{{.upperStartCamelObject}}, error)
-        FindListWithTotal(ctx context.Context, page, size uint, opts ...option.Option) ([]*{{.upperStartCamelObject}}, int64, error)
+        FindAll(ctx context.Context, opts ...option.Option) (result []*{{.upperStartCamelObject}}, err error)
+        FindList(ctx context.Context, page, size uint, opts ...option.Option) (result []*{{.upperStartCamelObject}}, err error)
+        FindListWithTotal(ctx context.Context, page, size uint, opts ...option.Option) (result []*{{.upperStartCamelObject}},total int64, err error)
         UpdateFields(ctx context.Context,record goqu.Record, opts ...option.Option) error
         Trans(ctx context.Context, fn func(context context.Context, session sqlx.Session) error) error
         DeleteTx(ctx context.Context, session sqlx.Session, id interface{}, opts ...option.Option) error
