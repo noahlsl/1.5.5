@@ -41,7 +41,7 @@ type (
         UpdateFields(ctx context.Context,record goqu.Record, opts ...option.Option) error
         Trans(ctx context.Context, fn func(context context.Context, session sqlx.Session) error) error
         DeleteTx(ctx context.Context, session sqlx.Session, id interface{}, opts ...option.Option) error
-        UpdateTx(ctx context.Context, session sqlx.Session, opts ...option.Option) error
+        UpdateTx(ctx context.Context, session sqlx.Session,record goqu.Record, opts ...option.Option) error
         InstallTx(ctx context.Context, session sqlx.Session, in *{{.upperStartCamelObject}}) error
 	}
 
@@ -274,8 +274,9 @@ func (c custom{{.upperStartCamelObject}}Model) DeleteTx(ctx context.Context, ses
 	return err
 }
 
-func (c custom{{.upperStartCamelObject}}Model) UpdateTx(ctx context.Context, session sqlx.Session, opts ...option.Option) error {
+func (c custom{{.upperStartCamelObject}}Model) UpdateTx(ctx context.Context, session sqlx.Session, record goqu.Record,opts ...option.Option) error {
 
+    opts = append(opts, option.WithRecord(record))
 	query, _, err := option.GenUpdate(c.table, opts...)
 	if err != nil {
 		return err
