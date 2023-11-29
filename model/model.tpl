@@ -79,7 +79,7 @@ func (c custom{{.upperStartCamelObject}}Model) InstallErrDoNothing(ctx context.C
 
 func (c custom{{.upperStartCamelObject}}Model) InstallErrDoUpdate(ctx context.Context, in *{{.upperStartCamelObject}}, uniKey string, record goqu.Record, opts ...option.Option) error {
 
-    opts = append(opts, option.WithErrDoUpdate(), option.WithUniKey(uniKey), option.WithSetRecord(record))
+    opts = append(opts, option.WithErrDoUpdate(), option.WithUniKey(uniKey), option.WithRecord(record))
     query, _, err := option.GenInstall(c.table, in, opts...)
     if err != nil {
         return err
@@ -222,7 +222,7 @@ func (c custom{{.upperStartCamelObject}}Model) FindListWithTotal(ctx context.Con
 
 func (c custom{{.upperStartCamelObject}}Model) UpdateFields(ctx context.Context,record goqu.Record, opts ...option.Option) error {
 
-    opts = append(opts, option.WithSetRecord(record))
+    opts = append(opts, option.WithRecord(record))
     query, _, err := option.GenUpdate(c.table, opts...)
     if err != nil {
         return err
