@@ -14,6 +14,7 @@ var (
 	commitId   string // 最新CommitId
 	branch     string // 代码分支名称
 
+    f = flag.String("f", "etc/config.yaml", "the server name")
 	e = flag.String("e", "", "the etcd address")
 	p = flag.String("p", "your-project", "the project name")
     v = flag.String("v", "dev", "the server env")
@@ -24,7 +25,7 @@ func main() {
 	flag.Parse()
     // 解析配置文件
 	var c config.Config
-    c.Parse(*e,*p,*v,*s)
+    c.Parse(*f,*e,*p,*v,*s)
     // 获取编译版本信息
     ver := version.NewVersion(serverName, buildTime, commitId, branch)
     // 创建服务
