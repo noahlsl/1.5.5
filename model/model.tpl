@@ -142,6 +142,7 @@ func (c custom{{.upperStartCamelObject}}Model) FindCount(ctx context.Context, op
 
 func (c custom{{.upperStartCamelObject}}Model) First(ctx context.Context, opts ...option.Option) (*{{.upperStartCamelObject}}, error) {
 	var resp *{{.upperStartCamelObject}}
+	opts = append(opts, option.WithPageSize(1, 1))
 	query, _, err := option.GenSelect(c.table, opts...)
 	if err != nil {
 		return nil, err
