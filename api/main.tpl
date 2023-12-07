@@ -14,7 +14,7 @@ var (
 	commitId   string // 最新CommitId
 	branch     string // 代码分支名称
 
-    f = flag.String("f", "etc/config.yaml", "the server name")
+    f = flag.String("f", "etc/{{.serviceName}}.yaml", "the config file")
 	e = flag.String("e", "", "the etcd address")
 	p = flag.String("p", "your-project", "the project name")
     v = flag.String("v", "dev", "the server env")

@@ -18,12 +18,10 @@ type Config struct {
     DataSource string
 }
 
-var defaultCfgFile = "etc/config.yaml"
-
-func (c *Config) Parse(e,p,v,s string)*Config {
+func (c *Config) Parse(f,e,p,v,s string)*Config {
     defer func() { c.Telemetry.Name = p }()
 	if e=="" {
-		conf.MustLoad(defaultCfgFile, c)
+		conf.MustLoad(f, c)
 		return c
 	}
 
