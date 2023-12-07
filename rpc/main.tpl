@@ -10,7 +10,7 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-    "gitlab.galaxy123.cloud/base/public/models/version"
+    "github.com/noahlsl/public/models/version"
 )
 
 var (

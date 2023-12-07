@@ -5,7 +5,7 @@ import (
 
 	{{.importPackages}}
     "github.com/zeromicro/go-zero/core/logx"
-	"gitlab.galaxy123.cloud/base/public/models/version"
+	"github.com/noahlsl/public/models/version"
 )
 
 var (

@@ -6,9 +6,9 @@ import (
 
     {{.ImportPackages}}
 
-	"gitlab.galaxy123.cloud/base/public/constants/enums"
-	"gitlab.galaxy123.cloud/base/public/core/logsx"
-    "gitlab.galaxy123.cloud/base/public/models/result"
+	"github.com/noahlsl/public/constants/enums"
+	"github.com/noahlsl/public/core/logsx"
+    "github.com/noahlsl/public/models/result"
     "github.com/zeromicro/go-zero/core/logx"
     {{if .HasRequest}}
 	"github.com/zeromicro/go-zero/rest/httpx"

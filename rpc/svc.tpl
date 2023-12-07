@@ -3,8 +3,8 @@ package svc
 import (
 
 	{{.imports}}
-	"gitlab.galaxy123.cloud/base/public/models/version"
-    "gitlab.galaxy123.cloud/base/public/core/logsx"
+	"github.com/noahlsl/public/models/version"
+    "github.com/noahlsl/public/core/logsx"
 )
 
 type ServiceContext struct {

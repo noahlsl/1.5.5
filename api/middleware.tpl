@@ -5,10 +5,10 @@ import (
 
 	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/core/stores/redis"
-	"gitlab.galaxy123.cloud/base/public/constants/enums"
-	"gitlab.galaxy123.cloud/base/public/core/logsx"
-	"gitlab.galaxy123.cloud/base/public/middleware"
-	"gitlab.galaxy123.cloud/base/public/models/result"
+	"github.com/noahlsl/public/constants/enums"
+	"github.com/noahlsl/public/core/logsx"
+	"github.com/noahlsl/public/middleware"
+	"github.com/noahlsl/public/models/result"
 )
 
 

@@ -6,10 +6,10 @@ import (
     "github.com/jinzhu/copier"
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/zrpc"
-	"gitlab.galaxy123.cloud/base/public/core/dbx"
-	"gitlab.galaxy123.cloud/base/public/core/etcdx"
-	"gitlab.galaxy123.cloud/base/public/core/redisx"
-	"gitlab.galaxy123.cloud/base/public/core/serverx"
+	"github.com/noahlsl/public/core/dbx"
+	"github.com/noahlsl/public/core/etcdx"
+	"github.com/noahlsl/public/core/redisx"
+	"github.com/noahlsl/public/core/serverx"
 )
 
 type Config struct {

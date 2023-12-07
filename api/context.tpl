@@ -3,11 +3,11 @@ package svc
 import (
 	{{.configImport}}
 
-	"gitlab.galaxy123.cloud/base/public/models/version"
-	"gitlab.galaxy123.cloud/base/public/core/logsx"
-	"gitlab.galaxy123.cloud/base/public/core/dbx"
+	"github.com/noahlsl/public/models/version"
+	"github.com/noahlsl/public/core/logsx"
+	"github.com/noahlsl/public/core/dbx"
 	"gorm.io/gorm"
-	//"gitlab.galaxy123.cloud/base/public/models/result"
+	//"github.com/noahlsl/public/models/result"
 )
 
 type ServiceContext struct {
