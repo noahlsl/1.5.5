@@ -10,6 +10,8 @@ RUN apk update --no-cache && apk add --no-cache tzdata
 {{end}}
 WORKDIR /build
 
+ENV GOPRIVATE=gitlab.galaxy123.cloud
+
 ADD go.mod .
 ADD go.sum .
 RUN go mod download
