@@ -10,8 +10,11 @@ RUN apk update --no-cache && apk add --no-cache tzdata
 {{end}}
 WORKDIR /build
 
-ADD go.mod .
-ADD go.sum .
+# ADD go.mod .
+# ADD go.sum .
+# 大仓模式模式,注意目录
+ADD ../../go.mod .
+ADD ../../go.sum .
 RUN go mod download
 COPY . .
 {{if .Argument}}COPY {{.GoRelPath}}/etc /app/etc
