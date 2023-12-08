@@ -7,7 +7,3 @@ var (
 {{if .withCache}}{{.cacheKeys}}{{end}}
 )
 
-
-const (
-
-)
