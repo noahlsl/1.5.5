@@ -2,6 +2,11 @@ FROM golang:{{.Version}}alpine AS builder
 
 LABEL stage=gobuilder
 
+# 配置文件ETCD 地址
+ENV ETCD_ADDRESS=''
+# 程序运行环境
+ENV SERVER_ENV=''
+
 ENV CGO_ENABLED 0
 {{if .Chinese}}ENV GOPROXY https://goproxy.cn,direct
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
@@ -31,4 +36,4 @@ COPY --from=builder /app/etc /app/etc{{end}}
 {{if .HasPort}}
 EXPOSE {{.Port}}
 {{end}}
-CMD ["./{{.ExeFile}}"{{.Argument}}]
+CMD ["./{{.ExeFile}}"{{.Argument}}, "-e", "$ETCD_ADDRESS", "-v", "$SERVER_ENV"]
