@@ -16,9 +16,10 @@ RUN apk update --no-cache && apk add --no-cache tzdata
 WORKDIR /build
 
 
-ADD go.mod .
-ADD go.sum .
-RUN go mod download
+# ADD go.mod .
+# ADD go.sum .
+# RUN go mod download
+# 使用vendor模式解决外部依赖包问题
 COPY . .
 {{if .Argument}}COPY {{.GoRelPath}}/etc /app/etc
 {{end}}RUN go build -ldflags="-s -w" -o /app/{{.ExeFile}} {{.GoMainFrom}}
