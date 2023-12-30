@@ -6,6 +6,7 @@ import (
 	{{.importPackages}}
     "github.com/zeromicro/go-zero/core/logx"
 	"github.com/noahlsl/public/models/version"
+	"github.com/noahlsl/public/middleware"
 )
 
 var (
@@ -30,6 +31,7 @@ func main() {
     ver := version.NewVersion(serverName, buildTime, commitId, branch)
     // 创建服务
 	server := rest.MustNewServer(c.RestConf)
+	server.Use(middleware.BaseMiddleware)
 	defer server.Stop()
    // 初始化服务依赖
 	ctx := svc.NewServiceContext(c,ver)
