@@ -11,3 +11,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		Config:c,
 	}
 }
+
+// Close 资源回收
+func (c *ServiceContext) Close() {
+}

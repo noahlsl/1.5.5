@@ -18,3 +18,7 @@ func NewServiceContext(c {{.config}}, ver *version.Version) *ServiceContext {
 		{{.middlewareAssignment}}
 	}
 }
+
+// Close 资源回收
+func (c *ServiceContext) Close() {
+}

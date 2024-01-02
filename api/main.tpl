@@ -24,6 +24,7 @@ func main() {
 	defer server.Stop()
 
 	ctx := svc.NewServiceContext(c, ver)
+	defer ctx.Close()
 	handler.RegisterHandlers(server, ctx)
 
 	fmt.Printf("Starting server at %s:%d...\n", c.Host, c.Port)
