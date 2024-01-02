@@ -1,28 +1,24 @@
 package config
 
-import (
-	"strings"
-
-	"github.com/jinzhu/copier"
-	"github.com/zeromicro/go-zero/core/conf"
-	"github.com/zeromicro/go-zero/core/stores/redis"
-	"github.com/zeromicro/go-zero/rest"
-	"github.com/noahlsl/public/core/dbx"
-	"github.com/noahlsl/public/core/etcdx"
-	"github.com/noahlsl/public/core/redisx"
-	"github.com/noahlsl/public/core/serverx"
-)
+import {{.authImport}}
 
 type Config struct {
 	rest.RestConf
+	{{.auth}}
+	{{.jwtTrans}}
 	RedisConf redis.RedisConf
-    DataSource string
+	DataSource string
 }
 
-func (c *Config) Parse(f,e,p,v,s string)*Config {
-    defer func() { c.Telemetry.Name = p }()
+
+const (
+	serverName = "{{.serviceName}}"
+)
+
+func (c *Config) Parse(e string) *Config {
+	defer func() { c.Telemetry.Name = c.Name }()
 	if e == "" {
-		conf.MustLoad(f, c)
+		conf.MustLoad(fmt.Sprintf("etc/%s.yaml", serverName), c)
 		return c
 	}
 
@@ -30,12 +26,14 @@ func (c *Config) Parse(f,e,p,v,s string)*Config {
 	//连接ETCD读取远程配置
 	etcd := (&etcdx.Cfg{Endpoints: address}).NewClient()
 	// 读取远程的服务配置
-	cfg := serverx.AnyLoad[*Config](etcd, p, v,s)
+	cfg := serverx.AnyLoadYaml[*Config](etcd, serverName)
 	_ = copier.Copy(c, cfg)
 	// 读取远程的Redis配置
-	c.RedisConf = redisx.Load(etcd,p, v)
+	c.RedisConf = redisx.LoadYaml(etcd)
 	// 读取远程的MySQL配置
-	dc := dbx.Load(etcd, p,v)
+	dc := dbx.LoadYaml(etcd)
 	c.DataSource = dc.DataSource()
+	// 读取远程的Minio配置
+	c.MinioConf = miniox.LoadYaml(etcd)
 	return c
 }

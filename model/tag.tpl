@@ -1,1 +1,1 @@
-`db:"{{.field}}" json:"{{.field}}"`
+`db:"{{.field}}"`
